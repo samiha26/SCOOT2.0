@@ -21,7 +21,7 @@ public class EWallet extends AppCompatActivity {
     ImageButton transactionButton;
     ImageButton ewalletSetting;
 
-    //current balance amount money
+    //current balance amount
     private int balance = 0;
 
     @Override
