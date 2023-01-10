@@ -19,7 +19,7 @@ public class Message extends AppCompatActivity {
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         int aniq;
         int samiha;
-        int qawiem;
+        int qawiem2;
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.message);
 
