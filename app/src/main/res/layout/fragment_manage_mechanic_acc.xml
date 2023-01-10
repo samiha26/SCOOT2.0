@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/scoot__1_"
+    android:foregroundTint="#CF4242"
+    android:visibility="visible"
+    tools:context=".ManageMechanicAcc">
+
+    <EditText
+        android:id="@+id/BizNameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        android:background="#F4EFEF"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizName" />
+
+    <EditText
+        android:id="@+id/BizMailEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        android:background="#F8F5F5"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizMail" />
+
+    <TextView
+        android:id="@+id/BizNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="452dp"
+        android:text="Business Number"
+        android:textColor="#F4F0F0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/BizNumberEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        android:background="#F6F2F2"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizNumber" />
+
+    <TextView
+        android:id="@+id/BizMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="356dp"
+        android:text="Business Email"
+        android:textColor="#FBF8F8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ChangePass"
+        android:layout_width="343dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#FAF8F8"
+        android:text="Update Profile"
+        android:textColor="#7295F9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizNumberEdit"
+        app:layout_constraintVertical_bias="0.695" />
+
+    <TextView
+        android:id="@+id/BizName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="260dp"
+        android:text="Business Name"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="92dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/BizNameUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="bizname"
+        android:textColor="#F6F5F5"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/BizNumberUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="biznum"
+        android:textColor="#F6F5F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizMailUpdate" />
+
+    <TextView
+        android:id="@+id/BizMailUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bizmail"
+        android:textColor="#F6F5F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BizNameUpdate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

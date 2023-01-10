@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/myescooter"
+        android:title="My E-scooter" />
+    <item
+        android:id="@+id/myaddress"
+        android:title="My Address" />
+    <item
+        android:id="@+id/myinformation"
+        android:title="My Information" />
+</menu>

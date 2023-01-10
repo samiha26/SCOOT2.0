@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn">
+
+    <Button
+        android:id="@+id/btnForgotPassword2"
+        android:layout_width="161dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="#7296F9"
+        android:text="REGISTER"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803" />
+
+    <Button
+        android:id="@+id/btnForgotPassword"
+        android:layout_width="244dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#7296F9"
+        android:text="forgot paswwrod"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/scoot7" />
+
+    <EditText
+        android:id="@+id/editTxtLoginEmail"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="460dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:ems="10"
+        android:hint="      Email Address"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTxtLoginPassword"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="388dp"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:ems="10"
+        android:hint="      ***********"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="288dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#7296F9"
+        android:text="Sign In"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629" />
+
+    <TextView
+        android:id="@+id/textCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Don't have an Account?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnForgotPassword2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
