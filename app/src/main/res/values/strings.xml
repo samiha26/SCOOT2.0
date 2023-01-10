@@ -11,4 +11,12 @@
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="servDate_hint">Service Date</string>
+    <string name="servTime_hint">Pickup Time</string>
+    <string name="pickupAddText_hint">Enter pickup address</string>
+    <string name="pickupNumText_hint">Enter phone number</string>
+    <string name="dropoffAddText_hint">Enter drop-off address</string>
+    <string name="dropoffNumText_hint">Enter phone number</string>
+    <string name="hyperlink">I have read and accepted the <a href="https://escooterservices.com/terms-and-conditions">Terms of Services</a> and <a href="https://escooterservices.com/privacy-policy">Privacy Policy</a></string>
+
 </resources>

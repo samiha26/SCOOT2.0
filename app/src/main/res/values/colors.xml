@@ -7,5 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#7296f9</color>
+    <color name="text_color">#494a4b</color>
     <color name="ic_banner_background" />
 </resources>
