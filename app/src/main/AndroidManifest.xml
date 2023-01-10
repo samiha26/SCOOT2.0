@@ -13,6 +13,20 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".Surin2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Surin"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ViewBookingActivity"
             android:exported="false">
             <meta-data
