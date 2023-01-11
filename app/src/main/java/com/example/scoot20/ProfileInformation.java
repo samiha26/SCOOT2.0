@@ -80,12 +80,13 @@ public class ProfileInformation extends AppCompatActivity {
             }
         });
         // Perform Fix With Scoot
+        /*
         Button FixWithScootButton = findViewById(R.id.FixWithScootButton);
         FixWithScootButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CreateBizAccount.class));
             }
-        });
+        }); */
     }
 }
