@@ -16,4 +16,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation" />
 
+    <EditText
+        android:id="@+id/editTxtMessage"
+        android:layout_width="352dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="56dp"
+        android:ems="10"
+        android:hint="Type your message here"
+        android:textStyle="italic"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="410dp"
+        android:layout_height="793dp"
+        android:gravity="bottom"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-5dp" />
+
+    <Button
+        android:id="@+id/btnSend"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#7296F9"
+        android:textColor="#FFFFFF"
+        app:icon="@android:drawable/ic_menu_send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

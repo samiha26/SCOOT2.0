@@ -147,7 +147,9 @@ public class Register extends AppCompatActivity {
                     ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFirstName, textLastName, textMobileNo);
 
                     //Extracting user reference from Database for "Registered Users"
-                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReferenceFromUrl("https://scoot-4e9ec-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                    //DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReferenceFromUrl("https://scoot-75d3d-default-rtdb.firebaseio.com/");
+                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
+
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

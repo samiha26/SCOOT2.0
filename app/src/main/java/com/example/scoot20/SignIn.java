@@ -99,9 +99,13 @@ public class SignIn extends AppCompatActivity {
                     //Check if email is verified before user can access their profile
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(SignIn.this, "You are Signed In now", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignIn.this, MainActivity.class));
 
-                    } //Open user Profile
+                        //Open user Profile
+                        //Start Home
+                        startActivity(new Intent(SignIn.this, MainActivity.class));
+                        finish(); //Close the Sign In Activity
+
+                    }
                     else{
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut(); //Sign out User
@@ -160,7 +164,7 @@ public class SignIn extends AppCompatActivity {
 
             //Start Home
             startActivity(new Intent(SignIn.this, MainActivity.class));
-            finish(); //Close SignIn
+            //finish(); //Close SignIn
 
         } else{
             Toast.makeText(SignIn.this, "You can Sign In now", Toast.LENGTH_LONG).show();

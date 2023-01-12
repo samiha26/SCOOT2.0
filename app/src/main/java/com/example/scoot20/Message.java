@@ -3,13 +3,20 @@ package com.example.scoot20;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Message extends AppCompatActivity {
+
+    private DatabaseReference messageDatabase;
+
+    private Button btnSend = findViewById(R.id.btnSend);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,5 +56,8 @@ public class Message extends AppCompatActivity {
                 return false;
             }
         });
+
+        messageDatabase = FirebaseDatabase.getInstance().getReference("Message");
+
     }
 }
