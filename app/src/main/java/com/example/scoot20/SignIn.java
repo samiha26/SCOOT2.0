@@ -51,6 +51,15 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+        Button btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignIn.this, "You can Register now", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SignIn.this, Register.class));
+            }
+        });
+
         //SignIn User
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +98,8 @@ public class SignIn extends AppCompatActivity {
 
                     //Check if email is verified before user can access their profile
                     if(firebaseUser.isEmailVerified()){
-                        Toast.makeText(SignIn.this, "You are logged in now", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this, "You are Signed In now", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SignIn.this, MainActivity.class));
 
                     } //Open user Profile
                     else{
@@ -149,7 +159,7 @@ public class SignIn extends AppCompatActivity {
             Toast.makeText(SignIn.this, "Already Signed In", Toast.LENGTH_LONG).show();
 
             //Start Home
-            startActivity(new Intent(SignIn.this, Home.class));
+            startActivity(new Intent(SignIn.this, MainActivity.class));
             finish(); //Close SignIn
 
         } else{

@@ -7,7 +7,7 @@
     tools:context=".SignIn">
 
     <Button
-        android:id="@+id/btnForgotPassword2"
+        android:id="@+id/btnSignUp"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginEnd="44dp"
@@ -24,7 +24,7 @@
         android:layout_width="244dp"
         android:layout_height="49dp"
         android:backgroundTint="#7296F9"
-        android:text="forgot paswwrod"
+        android:text="forgot password"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
         android:layout_marginEnd="24dp"
         android:text="Don't have an Account?"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnForgotPassword2"
+        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
