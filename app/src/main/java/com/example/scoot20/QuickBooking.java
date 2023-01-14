@@ -41,13 +41,14 @@ public class QuickBooking extends AppCompatActivity {
         final EditText edit_pickPhone = findViewById(R.id.pickphone);
         final EditText edit_dropAdd = findViewById(R.id.dropoffAddText);
         final EditText edit_dropPhone = findViewById(R.id.dropphone);
-        Button btn = findViewById(R.id.BookNowButton);
+        final EditText ETModel = findViewById(R.id.ETModel);
         DAOBookingDetails dao = new DAOBookingDetails();
 
-        btn.setOnClickListener(v -> {
+        BookNowButton.setOnClickListener(v -> {
 
             BookingDetails db = new BookingDetails(edit_servD.getText().toString(),edit_servT.getText().toString(),
-                    edit_pickAdd.getText().toString(),edit_pickPhone.getText().length(),edit_dropAdd.getText().toString(),edit_dropPhone.getText().length());
+                    edit_pickAdd.getText().toString(),edit_pickPhone.getText().toString(),edit_dropAdd.getText().toString(),edit_dropPhone.getText().toString(),
+                    ETModel.getText().toString());
             dao.add(db).addOnSuccessListener(suc ->{
                 Toast.makeText(this, "Recorded!", Toast.LENGTH_SHORT).show();
             }).addOnFailureListener(er ->{
