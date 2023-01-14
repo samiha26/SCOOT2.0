@@ -20,7 +20,7 @@
         android:id="@+id/QuickBookingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="268dp"
         android:layout_marginEnd="128dp"
         android:backgroundTint="#7296F9"
         android:text="Quick Booking"
