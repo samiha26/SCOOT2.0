@@ -1,6 +1,7 @@
 package com.example.scoot20;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,14 +16,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EWallet extends AppCompatActivity {
 
+    private SharedPreferences mPrefs;
+    private final String AMOUNT_KEY = "amount";
     TextView balanceTextView;
-    ImageButton topupButton;
-    ImageButton payButton;
-    ImageButton transactionButton;
-    ImageButton ewalletSetting;
-
-    //current balance amount
-    private int balance = 0;
+    int balance = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,21 +60,28 @@ public class EWallet extends AppCompatActivity {
 
         //initialize views
         balanceTextView = findViewById(R.id.TxtAmountEwallet);
-        topupButton = findViewById(R.id.BtnTopupEwallet);
-        payButton = findViewById(R.id.BtnPayEwallet);
-        transactionButton = findViewById(R.id.BtnTransactionEwallet);
-        ewalletSetting = findViewById(R.id.BtnEwalletSetting);
+        mPrefs =getPreferences(MODE_PRIVATE);
+
+        //Retrieve the initial amount from sharedPreferences
+        double initialAmount = mPrefs.getFloat(AMOUNT_KEY, 0);
+        balanceTextView.setText(String.format("%.2f", initialAmount));
+        // ...
+
+        ImageButton topupButton = findViewById(R.id.BtnTopupEwallet);
+        ImageButton payButton = findViewById(R.id.BtnPayEwallet);
+        ImageButton transactionButton = findViewById(R.id.BtnTransactionEwallet);
+        ImageButton ewalletSetting = findViewById(R.id.BtnEwalletSetting);
 
         //set initial balance amount
-        balanceTextView.setText(String.format("%d.5", balance));
+        //balanceTextView.setText(String.format("%d.5", balance));
 
         //set onClick Listeners
         topupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //open topup activity
-                //Intent topupIntent = new Intent(EWallet.this, TopUpActivity.class);
-                //startActivity(topupIntent);
+                Intent intent = new Intent(EWallet.this, EWalletTopup.class);
+                startActivity(intent);
             }
         });
 
@@ -85,8 +89,17 @@ public class EWallet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open pay activity
-                //Intent payIntent = new Intent(EWallet.this, EwalletPayActivity.class);
-                //startActivity(payIntent);
+                Intent intent = new Intent(EWallet.this, EWalletPay.class);
+                startActivity(intent);
+            }
+        });
+
+        transactionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //startActivity(new Intent(getApplicationContext(), EWalletTransactions.class));
+                Intent intent = new Intent(EWallet.this, EWalletTransactions.class);
+                startActivity(intent);
             }
         });
 
@@ -94,10 +107,6 @@ public class EWallet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //create a new intent to open the e-wallet setting activity
-                //Intent settingsIntent = new Intent(EWallet.this, EWalletSetting.class);
-
-                //start the new activity
-                //startActivity(settingsIntent);
                 startActivity(new Intent(getApplicationContext(), EWalletSetting.class));
             }
         });

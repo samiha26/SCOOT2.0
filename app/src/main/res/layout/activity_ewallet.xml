@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/BtnBackToEWallet"
+                android:id="@+id/BtnBackToMainMenu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="0"
@@ -32,7 +32,7 @@
                 app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
-                android:id="@+id/TxtEWalletTopupTitle"
+                android:id="@+id/TxtEWalletTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
