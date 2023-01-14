@@ -13,10 +13,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnQuickBooking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnQuickBooking = findViewById(R.id.QuickBookingButton);
+        btnQuickBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, QuickBooking.class));
+
+            }
+        });
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -38,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.ewallet:
                         startActivity(new Intent(getApplicationContext(),EWallet.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.message:
-                        startActivity(new Intent(getApplicationContext(),Message.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.profile:
