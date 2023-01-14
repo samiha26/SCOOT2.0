@@ -16,7 +16,7 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
-            android:name=".AddEScooter"
+            android:name=".ChatPlatform"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -31,13 +31,6 @@
         </activity>
         <activity
             android:name=".QuickBooking"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ProfileInformation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

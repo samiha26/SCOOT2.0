@@ -1,6 +1,7 @@
 package com.example.scoot20;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,15 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
 
     private Context context;
-    private List<ReadWriteUserDetails> readWriteUserDetailsList;
+    List<ReadWriteUserDetails> readWriteUserDetailsList;
 
     public UserAdapter(Context context) {
         this.context = context;
         readWriteUserDetailsList=new ArrayList<>();
+    }
+
+    public UserAdapter(ArrayList<ReadWriteUserDetails> readWriteUserDetailsList) {
+        this.readWriteUserDetailsList = readWriteUserDetailsList;
     }
 
     public void add(ReadWriteUserDetails readWriteUserDetails){
@@ -35,7 +40,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_message,parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_row,parent, false);
         return null;
     }
 
@@ -44,6 +49,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder>{
         ReadWriteUserDetails readWriteUserDetails = readWriteUserDetailsList.get(position);
         holder.fullName.setText(readWriteUserDetails.getFullName());
         holder.email.setText(readWriteUserDetails.getEmailAddress());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChatPlatform.class);
+            }
+        });
     }
 
     @Override
