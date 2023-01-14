@@ -13,11 +13,12 @@ public class DAOBookingDetails {
 
         authProfile = FirebaseAuth.getInstance();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference(BookingDetails.class.getSimpleName());
+        databaseReference = db.getReference("BookingDetails");
     }
     public Task<Void> add(BookingDetails bd){
         String key = authProfile.getCurrentUser().getUid();
-        bd.setKey(key);
-        return databaseReference.child(key).setValue(bd);
+        String BDKey = databaseReference.child(key).push().getKey();
+        bd.setKey(BDKey);
+        return databaseReference.child(key).child(BDKey).setValue(bd);
     }
 }

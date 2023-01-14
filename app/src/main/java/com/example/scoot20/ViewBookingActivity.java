@@ -34,7 +34,7 @@ public class ViewBookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_booking);
         authProfile = FirebaseAuth.getInstance();
         String key = authProfile.getCurrentUser().getUid();
-        databaseBookingDetails = FirebaseDatabase.getInstance().getReference("BookingDetails");
+        databaseBookingDetails = FirebaseDatabase.getInstance().getReference("BookingDetails").child(key);
 
         listViewBooking = (ListView) findViewById(R.id.listViewBooking);
         bookingDetailsList = new ArrayList<>();
@@ -90,12 +90,7 @@ public class ViewBookingActivity extends AppCompatActivity {
                 bookingDetailsList.clear();
                 for(DataSnapshot bookingSnapshot : snapshot.getChildren()){
                     BookingDetails bookingDetails = bookingSnapshot.getValue(BookingDetails.class);
-                    authProfile = FirebaseAuth.getInstance();
-                    String key = authProfile.getCurrentUser().getUid();
-                    Toast.makeText(getApplicationContext(), key, Toast.LENGTH_LONG).show();
-                    if(bookingDetails.getKey().equals(key)){
-                        bookingDetailsList.add(bookingDetails);
-                    }
+                    bookingDetailsList.add(bookingDetails);
                 }
                 BookingDetailList adapter = new BookingDetailList(ViewBookingActivity.this, bookingDetailsList);
                 listViewBooking.setAdapter(adapter);
