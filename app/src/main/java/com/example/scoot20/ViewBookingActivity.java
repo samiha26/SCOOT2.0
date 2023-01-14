@@ -6,15 +6,44 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewBookingActivity extends AppCompatActivity {
+    DatabaseReference databaseBookingDetails;
+    ListView listViewBooking;
+    List<BookingDetails> bookingDetailsList;
+    FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_booking);
+        authProfile = FirebaseAuth.getInstance();
+        String key = authProfile.getCurrentUser().getUid();
+        databaseBookingDetails = FirebaseDatabase.getInstance().getReference("BookingDetails");
+
+        listViewBooking = (ListView) findViewById(R.id.listViewBooking);
+        bookingDetailsList = new ArrayList<>();
+
+
+        Button BtnBookNow = findViewById(R.id.BtnBookNow);
+        BtnBookNow.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),QuickBooking.class));
+        });
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -48,6 +77,33 @@ public class ViewBookingActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseBookingDetails.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                bookingDetailsList.clear();
+                for(DataSnapshot bookingSnapshot : snapshot.getChildren()){
+                    BookingDetails bookingDetails = bookingSnapshot.getValue(BookingDetails.class);
+                    authProfile = FirebaseAuth.getInstance();
+                    String key = authProfile.getCurrentUser().getUid();
+                    Toast.makeText(getApplicationContext(), key, Toast.LENGTH_LONG).show();
+                    if(bookingDetails.getKey().equals(key)){
+                        bookingDetailsList.add(bookingDetails);
+                    }
+                }
+                BookingDetailList adapter = new BookingDetailList(ViewBookingActivity.this, bookingDetailsList);
+                listViewBooking.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

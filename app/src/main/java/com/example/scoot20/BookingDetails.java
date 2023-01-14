@@ -8,16 +8,21 @@ public class BookingDetails {
     private String pPhone;
     private String dAdd;
     private String dPhone;
+    private String model;
+    private String key;
 
-    public BookingDetails(String date, String time, String pAdd, int length, String dAdd, int i) {}
+    public BookingDetails() {}
 
-    public BookingDetails(String date, String time, String pAdd, String pPhone, String dAdd, String dPhone) {
+
+
+    public BookingDetails(String date, String time, String pAdd, String pPhone, String dAdd, String dPhone, String model) {
         this.date = date;
         this.time = time;
         this.pAdd = pAdd;
         this.pPhone = pPhone;
         this.dAdd = dAdd;
         this.dPhone = dPhone;
+        this.model = model;
     }
 
     public String getDate() {
@@ -67,4 +72,21 @@ public class BookingDetails {
     public void setdPhone(String dPhone) {
         this.dPhone = dPhone;
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
 }
