@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("Quick Booking");
+        getSupportActionBar().setTitle("Home");
 
         btnQuickBooking.setOnClickListener(new View.OnClickListener() {
             @Override

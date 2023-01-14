@@ -164,7 +164,7 @@ public class SignIn extends AppCompatActivity {
 
             //Start Home
             startActivity(new Intent(SignIn.this, MainActivity.class));
-            //finish(); //Close SignIn
+            finish(); //Close SignIn
 
         } else{
             Toast.makeText(SignIn.this, "You can Sign In now", Toast.LENGTH_LONG).show();

@@ -4,24 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.scoot20.databinding.ActivityMessageBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Message extends AppCompatActivity {
-
-    private DatabaseReference messageDatabase;
-
-    private Button btnSend = findViewById(R.id.btnSend);
-
+public class Message extends AppCompatActivity{
+    ActivityMessageBinding binding;
+    UserAdapter userAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+
+        userAdapter = new UserAdapter(this);
+
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         // Set Home selected
@@ -56,8 +60,6 @@ public class Message extends AppCompatActivity {
                 return false;
             }
         });
-
-        messageDatabase = FirebaseDatabase.getInstance().getReference("Message");
-
     }
 }
+
