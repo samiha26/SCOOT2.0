@@ -5,9 +5,6 @@
         android:id="@+id/myescooter"
         android:title="My E-scooter" />
     <item
-        android:id="@+id/myaddress"
-        android:title="My Address" />
-    <item
         android:id="@+id/myinformation"
         android:title="My Information" />
 </menu>
