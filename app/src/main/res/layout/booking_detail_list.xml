@@ -47,6 +47,12 @@
             android:id="@+id/txt_Status"
             android:text="Pending"
             android:textSize="14sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txt_Price"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 

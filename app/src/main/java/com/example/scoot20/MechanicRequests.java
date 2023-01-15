@@ -52,7 +52,7 @@ public class MechanicRequests extends AppCompatActivity {
                     case R.id.request:
                         return true;
                     case R.id.ewalletmechanic:
-                        startActivity(new Intent(getApplicationContext(),MechanicEWallet.class));
+                        startActivity(new Intent(getApplicationContext(),CreateEWalletMechanic.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.mechanicprofile:

@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class MechanicOrderPrice extends AppCompatActivity implements Serializable {
     private FirebaseAuth authProfile = FirebaseAuth.getInstance();
     private DatabaseReference db;
+    private DatabaseReference databaseBD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class MechanicOrderPrice extends AppCompatActivity implements Serializabl
             String mechanicKey = authProfile.getCurrentUser().getUid();
             db = FirebaseDatabase.getInstance().getReference("Order").child(mechanicKey).child(order.getKey());
             db.setValue(order);
+            databaseBD = FirebaseDatabase.getInstance().getReference("BookingDetails").child(order.getUserID()).child(order.getBookingID());
+            databaseBD.child("price").setValue(order.getPrice());
             finish();
         });
     }

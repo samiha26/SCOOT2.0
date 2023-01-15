@@ -86,7 +86,8 @@ public class ViewBookingActivity extends AppCompatActivity {
                 bookingDetailsList.clear();
                 for(DataSnapshot bookingSnapshot : snapshot.getChildren()){
                     BookingDetails bookingDetails = bookingSnapshot.getValue(BookingDetails.class);
-                    bookingDetailsList.add(bookingDetails);
+                    if(!bookingDetails.isHasPaid())
+                        bookingDetailsList.add(bookingDetails);
                 }
                 BookingDetailList adapter = new BookingDetailList(ViewBookingActivity.this, bookingDetailsList);
                 listViewBooking.setAdapter(adapter);

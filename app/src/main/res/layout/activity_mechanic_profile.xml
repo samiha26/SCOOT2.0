@@ -1,9 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MechanicProfile">
+    tools:context=".MechanicProfile"
+    android:background="@drawable/scoot__1_">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/mech_bottom_navigation"
+        android:layout_marginBottom="470dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/txt_profileName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Name"
+            android:textColor="@color/ic_banner_background" />
+
+        <TextView
+            android:id="@+id/txt_profileMail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="e-mail"
+            android:textColor="@color/ic_banner_background" />
+
+        <TextView
+            android:id="@+id/txt_profileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="number"
+            android:textColor="@color/ic_banner_background" />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mech_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/mechanic_navigation" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/mech_bottom_navigation"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/ic_banner_background" />
+
+        <EditText
+            android:id="@+id/ETFirstNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@color/ic_banner_background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textColor="@color/ic_banner_background" />
+
+        <EditText
+            android:id="@+id/ETLastNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@color/ic_banner_background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/ic_banner_background" />
+
+        <EditText
+            android:id="@+id/ETPhoneNumberEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@color/ic_banner_background" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BtnEditUser"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#FEFEFE"
+        android:text="Edit User"
+        android:textAllCaps="false"
+        android:textColor="#7295F8"
+        android:textStyle="bold" />
+
+</RelativeLayout>

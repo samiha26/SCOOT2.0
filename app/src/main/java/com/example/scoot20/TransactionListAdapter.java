@@ -32,11 +32,13 @@ public class TransactionListAdapter extends ArrayAdapter<Transaction> {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.list_item_transaction, parent, false);
         TextView textview_transID = (TextView) listViewItem.findViewById(R.id.textView_transID);
+        TextView textview_payFrom = (TextView) listViewItem.findViewById(R.id.textView_payFrom);
         TextView textview_payTo = (TextView) listViewItem.findViewById(R.id.textView_payTo);
         TextView textview_payAmount = (TextView) listViewItem.findViewById(R.id.textView_payAmount);
 
         textview_transID.setText(transaction.getTransID());
         textview_payTo.setText(transaction.getPayTo());
+        textview_payFrom.setText(transaction.getPayFrom());
         textview_payAmount.setText(String.valueOf(transaction.getPayAmount()));
 
         return listViewItem;

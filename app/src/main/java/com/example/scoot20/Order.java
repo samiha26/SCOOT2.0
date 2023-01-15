@@ -16,6 +16,8 @@ public class Order implements Serializable {
     private String price;
     private String bookingID;
 
+    private boolean hasPaid;
+
     public Order(){}
 
     public Order(String name, String date, String time, String model) {
@@ -96,6 +98,15 @@ public class Order implements Serializable {
     public void setBookingID(String bookingID) {
         this.bookingID = bookingID;
     }
+
+    public boolean isHasPaid() {
+        return hasPaid;
+    }
+
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
+
 
     @Override
     public String toString() {

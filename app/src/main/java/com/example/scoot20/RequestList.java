@@ -68,6 +68,8 @@ public class RequestList extends ArrayAdapter<BookingDetails> {
         daoOrder.add(order);
         String key = authProfile.getCurrentUser().getUid();
         BookingDetails.setHasMechanic(true);
+        BookingDetails.setMechanicID(key);
+        BookingDetails.setOrderID(order.getKey());
         databaseBD.setValue(BookingDetails);
         databaseMechanic = FirebaseDatabase.getInstance().getReference("Registered Mechanics").child(key).child("fullName");
         databaseMechanic.addValueEventListener(new ValueEventListener() {

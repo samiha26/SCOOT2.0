@@ -1,6 +1,8 @@
 package com.example.scoot20;
 
-public class BookingDetails {
+import java.io.Serializable;
+
+public class BookingDetails implements Serializable {
 
     private String date;
     private String time;
@@ -15,6 +17,10 @@ public class BookingDetails {
     private boolean hasMechanic;
     private String mechanicName;
     private boolean mechanicDone;
+    private String price;
+    private boolean hasPaid;
+    private String mechanicID;
+    private String orderID;
 
     public BookingDetails() {}
 
@@ -132,6 +138,38 @@ public class BookingDetails {
 
     public void setMechanicDone(boolean mechanicDone) {
         this.mechanicDone = mechanicDone;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public boolean isHasPaid() {
+        return hasPaid;
+    }
+
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
+
+    public String getMechanicID() {
+        return mechanicID;
+    }
+
+    public void setMechanicID(String mechanicID) {
+        this.mechanicID = mechanicID;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 
     public static Order toOrder (BookingDetails bookingDetails){

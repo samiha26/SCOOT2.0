@@ -71,7 +71,7 @@ public class OrderList extends ArrayAdapter<Order> implements Serializable {
         String mechanicKey = authProfile.getCurrentUser().getUid();
         order.setStatus(status);
         databaseBD = FirebaseDatabase.getInstance().getReference("BookingDetails").child(order.getUserID()).child(order.getBookingID());
-        databaseBD.child("MechanicDone").setValue(true);
+        databaseBD.child("mechanicDone").setValue(status);
         databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
         databaseOrder.child(mechanicKey).child(order.getKey()).child("status").setValue(status);
         this.notifyDataSetChanged();

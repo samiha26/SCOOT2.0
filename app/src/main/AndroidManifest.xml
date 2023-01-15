@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".CreateEWalletMechanic"
+            android:exported="false" />
+        <activity
             android:name=".MechanicOrderPrice"
             android:exported="false" />
         <activity
@@ -51,6 +54,13 @@
         </activity>
         <activity
             android:name=".QuickBooking"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ProfileInformation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -107,6 +117,13 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddEScooter"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

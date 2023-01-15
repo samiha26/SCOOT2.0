@@ -65,6 +65,7 @@ public class EWalletTopup extends AppCompatActivity {
                 Transaction transaction = new Transaction();
                 transaction.setTransID(transID);
                 transaction.setPayTo(userKey);
+                transaction.setPayFrom(userKey);
                 transaction.setPayAmount(topUpAmount);
                 databaseTransaction.child(transID).setValue(transaction);
 

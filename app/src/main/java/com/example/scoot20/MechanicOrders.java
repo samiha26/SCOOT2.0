@@ -53,7 +53,7 @@ public class MechanicOrders extends AppCompatActivity implements Serializable {
                     case R.id.order:
                         return true;
                     case R.id.ewalletmechanic:
-                        startActivity(new Intent(getApplicationContext(),MechanicEWallet.class));
+                        startActivity(new Intent(getApplicationContext(),CreateEWalletMechanic.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.mechanicprofile:
@@ -75,7 +75,8 @@ public class MechanicOrders extends AppCompatActivity implements Serializable {
                 orderList.clear();
                 for(DataSnapshot orderSnapshot : snapshot.getChildren()){
                     Order order = orderSnapshot.getValue(Order.class);
-                    orderList.add(order);
+                    if(!order.isHasPaid())
+                        orderList.add(order);
                 }
                 OrderList adapter = new OrderList(MechanicOrders.this, orderList);
                 listViewOrder.setAdapter(adapter);

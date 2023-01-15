@@ -1,6 +1,7 @@
 package com.example.scoot20;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,21 +36,26 @@ public class BookingDetailList extends ArrayAdapter<BookingDetails> {
         TextView txt_sDate = (TextView) listViewItem.findViewById(R.id.txt_sDate);
         TextView txt_MechanicName = (TextView) listViewItem.findViewById(R.id.txt_MechanicName);
         TextView txt_Status = (TextView) listViewItem.findViewById(R.id.txt_Status);
+        TextView txt_Price = (TextView) listViewItem.findViewById(R.id.txt_Price);
         ImageButton BtnPayOrder = (ImageButton) listViewItem.findViewById(R.id.BtnPayOrder);
 
         txt_phoneNumber.setText(bookingDetails.getdPhone());
         txt_escooterModel.setText(bookingDetails.getModel());
         txt_sDate.setText(bookingDetails.getDate());
-        if(bookingDetails.isHasMechanic()) {
+        if(bookingDetails.isHasMechanic() && !bookingDetails.isMechanicDone()) {
             txt_MechanicName.setText(bookingDetails.getMechanicName());
             txt_Status.setText("Mechanic fixing");
         }
         if(bookingDetails.isMechanicDone()){
             BtnPayOrder.setVisibility(View.VISIBLE);
             BtnPayOrder.setEnabled(true);
+            txt_Price.setText(bookingDetails.getPrice());
+            txt_Status.setText("Mechanic done. Please pay.");
         }
-
-
+        BtnPayOrder.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(),EWalletPay.class).putExtra("BookingDetails",bookingDetails);
+            context.startActivity(intent);
+        });
         return listViewItem;
     }
 
