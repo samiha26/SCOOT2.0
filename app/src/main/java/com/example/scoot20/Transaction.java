@@ -3,6 +3,7 @@ package com.example.scoot20;
 public class Transaction {
     private String TransID;
     private String payTo;
+    private String payFrom;
     private double payAmount;
 
     public Transaction(){}
@@ -33,5 +34,13 @@ public class Transaction {
 
     public void setPayAmount(double payAmount) {
         this.payAmount = payAmount;
+    }
+
+    public String getPayFrom() {
+        return payFrom;
+    }
+
+    public void setPayFrom(String payFrom) {
+        this.payFrom = payFrom;
     }
 }

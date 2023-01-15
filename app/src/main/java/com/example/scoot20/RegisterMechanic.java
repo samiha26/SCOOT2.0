@@ -158,7 +158,7 @@ public class RegisterMechanic extends AppCompatActivity {
                                 Toast.makeText(RegisterMechanic.this, "User registration is successful! :D. Please verify your email", Toast.LENGTH_LONG).show();
 
                                 //Open MainActivity after successful registration
-                                Intent intent = new Intent(RegisterMechanic.this, MainActivity.class);
+                                Intent intent = new Intent(RegisterMechanic.this, SignInMechanic.class);
 
                                 //To Prevent User from returning back to Register upon pressing back button after registration
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -33,10 +33,22 @@ public class BookingDetailList extends ArrayAdapter<BookingDetails> {
         TextView txt_phoneNumber = (TextView) listViewItem.findViewById(R.id.txt_phoneNumber);
         TextView txt_escooterModel = (TextView) listViewItem.findViewById(R.id.txt_escooterModel);
         TextView txt_sDate = (TextView) listViewItem.findViewById(R.id.txt_sDate);
+        TextView txt_MechanicName = (TextView) listViewItem.findViewById(R.id.txt_MechanicName);
+        TextView txt_Status = (TextView) listViewItem.findViewById(R.id.txt_Status);
+        ImageButton BtnPayOrder = (ImageButton) listViewItem.findViewById(R.id.BtnPayOrder);
 
         txt_phoneNumber.setText(bookingDetails.getdPhone());
         txt_escooterModel.setText(bookingDetails.getModel());
         txt_sDate.setText(bookingDetails.getDate());
+        if(bookingDetails.isHasMechanic()) {
+            txt_MechanicName.setText(bookingDetails.getMechanicName());
+            txt_Status.setText("Mechanic fixing");
+        }
+        if(bookingDetails.isMechanicDone()){
+            BtnPayOrder.setVisibility(View.VISIBLE);
+            BtnPayOrder.setEnabled(true);
+        }
+
 
         return listViewItem;
     }

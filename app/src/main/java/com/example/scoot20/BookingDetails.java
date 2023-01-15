@@ -12,6 +12,9 @@ public class BookingDetails {
     private String name;
     private String key;
     private String parentKey;
+    private boolean hasMechanic;
+    private String mechanicName;
+    private boolean mechanicDone;
 
     public BookingDetails() {}
 
@@ -105,6 +108,30 @@ public class BookingDetails {
 
     public void setParentKey(String parentKey) {
         this.parentKey = parentKey;
+    }
+
+    public boolean isHasMechanic() {
+        return hasMechanic;
+    }
+
+    public void setHasMechanic(boolean hasMechanic) {
+        this.hasMechanic = hasMechanic;
+    }
+
+    public String getMechanicName() {
+        return mechanicName;
+    }
+
+    public void setMechanicName(String mechanicName) {
+        this.mechanicName = mechanicName;
+    }
+
+    public boolean isMechanicDone() {
+        return mechanicDone;
+    }
+
+    public void setMechanicDone(boolean mechanicDone) {
+        this.mechanicDone = mechanicDone;
     }
 
     public static Order toOrder (BookingDetails bookingDetails){

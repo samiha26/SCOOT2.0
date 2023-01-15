@@ -75,7 +75,8 @@ public class MechanicRequests extends AppCompatActivity {
                 for(DataSnapshot customerSnapshot : snapshot.getChildren()){
                     for(DataSnapshot uniqueSnapshot : customerSnapshot.getChildren()){
                         BookingDetails bd = uniqueSnapshot.getValue(BookingDetails.class);
-                        requestList.add(bd);
+                        if(!bd.isHasMechanic())
+                            requestList.add(bd);
                     }
                 }
                 RequestList adapter = new RequestList(MechanicRequests.this, requestList);

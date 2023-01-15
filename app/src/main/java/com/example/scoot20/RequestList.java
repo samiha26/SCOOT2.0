@@ -1,6 +1,7 @@
 package com.example.scoot20;
 
 import android.app.Activity;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
 public class RequestList extends ArrayAdapter<BookingDetails> {
+    FirebaseAuth authProfile = FirebaseAuth.getInstance();
+    DatabaseReference databaseMechanic;
+    DatabaseReference databaseBD;
     private Activity context;
     private List<BookingDetails> requestList;
     DAOBookingDetails daoBookingDetails = new DAOBookingDetails();
@@ -51,9 +62,27 @@ public class RequestList extends ArrayAdapter<BookingDetails> {
     public void AcceptRequest(int position){
         BookingDetails BookingDetails = requestList.get(position);
         Order order = BookingDetails.toOrder(BookingDetails);
+        databaseBD = FirebaseDatabase.getInstance().getReference("BookingDetails").child(BookingDetails.getParentKey()).child(BookingDetails.getKey());
         order.setUserID(BookingDetails.getParentKey());
+        order.setBookingID(BookingDetails.getKey());
         daoOrder.add(order);
-        daoBookingDetails.remove(BookingDetails.getParentKey(), BookingDetails.getKey());
+        String key = authProfile.getCurrentUser().getUid();
+        BookingDetails.setHasMechanic(true);
+        databaseBD.setValue(BookingDetails);
+        databaseMechanic = FirebaseDatabase.getInstance().getReference("Registered Mechanics").child(key).child("fullName");
+        databaseMechanic.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String mechanicName = snapshot.getValue(String.class);
+                BookingDetails.setMechanicName(mechanicName);
+                databaseBD.setValue(BookingDetails);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         this.notifyDataSetChanged();
     }
 

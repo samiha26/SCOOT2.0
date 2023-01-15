@@ -1,6 +1,7 @@
 package com.example.scoot20;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.util.List;
-/*
-public class OrderList extends ArrayAdapter<BookingDetails> {
-    private Activity context;
-    private List<BookingDetails> orderList;
-    private DatabaseReference databaseOrder;
 
-    public OrderList(Activity context, List<BookingDetails> orderList){
-        super(context, R.layout.list_layout, orderList);
+public class OrderList extends ArrayAdapter<Order> implements Serializable {
+    private Activity context;
+    private List<Order> orderList;
+    private DatabaseReference databaseOrder;
+    private DatabaseReference databaseBD;
+    private FirebaseAuth authProfile = FirebaseAuth.getInstance();
+
+    public OrderList(Activity context, List<Order> orderList){
+        super(context, R.layout.list_item_order, orderList);
         this.context = context;
         this.orderList = orderList;
     }
@@ -33,29 +38,42 @@ public class OrderList extends ArrayAdapter<BookingDetails> {
         Order order = orderList.get(position);
 
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.list_layout, parent, false);
+        View listViewItem = inflater.inflate(R.layout.list_item_order, parent, false);
         TextView txt_Ordername = (TextView) listViewItem.findViewById(R.id.txt_Ordername);
         TextView txt_Orderdate = (TextView) listViewItem.findViewById(R.id.txt_Orderdate);
         TextView txt_Ordertime = (TextView) listViewItem.findViewById(R.id.txt_Ordertime);
         TextView txt_Ordermodel = (TextView) listViewItem.findViewById(R.id.txt_Ordermodel);
+        TextView txt_Orderprice = (TextView) listViewItem.findViewById(R.id.txt_Orderprice);
+        TextView txt_Orderstatus = (TextView) listViewItem.findViewById(R.id.txt_Orderstatus);
         ImageButton BtnDone = (ImageButton) listViewItem.findViewById(R.id.BtnDone);
         BtnDone.setOnClickListener(v -> {
             updateOrderStatus(position,true);
+            Intent intent = new Intent(getContext(),MechanicOrderPrice.class).putExtra("Order",order);
+            context.startActivity(intent);
         });
 
         txt_Ordername.setText(order.getName());
         txt_Orderdate.setText(order.getDate());
         txt_Ordertime.setText(order.getTime());
         txt_Ordermodel.setText(order.getModel());
-
+        txt_Orderprice.setText(order.getPrice());
+        if(order.isStatus()) {
+            txt_Orderstatus.setText("Done");
+            BtnDone.setEnabled(false);
+            BtnDone.setVisibility(View.GONE);
+        }
+        else
+            txt_Orderstatus.setText("Fixing");
         return listViewItem;
     }
     public void updateOrderStatus(int position, boolean status){
-        BookingDetails order = orderList.get(position);
+        Order order = orderList.get(position);
+        String mechanicKey = authProfile.getCurrentUser().getUid();
         order.setStatus(status);
+        databaseBD = FirebaseDatabase.getInstance().getReference("BookingDetails").child(order.getUserID()).child(order.getBookingID());
+        databaseBD.child("MechanicDone").setValue(true);
         databaseOrder = FirebaseDatabase.getInstance().getReference("Order");
-        databaseOrder.child(order.getKey()).child("status").setValue(status);
+        databaseOrder.child(mechanicKey).child(order.getKey()).child("status").setValue(status);
         this.notifyDataSetChanged();
     }
 }
-*/

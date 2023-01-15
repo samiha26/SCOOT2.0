@@ -7,7 +7,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DAOOrder {
     private DatabaseReference databaseReference;
-    private FirebaseAuth authProfile;
+    private FirebaseAuth authProfile = FirebaseAuth.getInstance();
     public DAOOrder(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference(Order.class.getSimpleName());

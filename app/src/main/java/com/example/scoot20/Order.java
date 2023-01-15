@@ -2,7 +2,9 @@ package com.example.scoot20;
 
 import com.google.firebase.database.Exclude;
 
-public class Order{
+import java.io.Serializable;
+
+public class Order implements Serializable {
     @Exclude
     private String key;
     private String name;
@@ -11,6 +13,8 @@ public class Order{
     private String model;
     private String userID;
     private boolean status;
+    private String price;
+    private String bookingID;
 
     public Order(){}
 
@@ -75,6 +79,22 @@ public class Order{
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getBookingID() {
+        return bookingID;
+    }
+
+    public void setBookingID(String bookingID) {
+        this.bookingID = bookingID;
     }
 
     @Override
