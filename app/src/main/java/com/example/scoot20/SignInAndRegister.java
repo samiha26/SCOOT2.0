@@ -19,7 +19,7 @@ public class SignInAndRegister extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignInAndRegister.this, SignIn.class);
+                Intent intent = new Intent(SignInAndRegister.this, SignInUser.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +29,27 @@ public class SignInAndRegister extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignInAndRegister.this, Register.class);
+                Intent intent = new Intent(SignInAndRegister.this, RegisterUser.class);
+                startActivity(intent);
+            }
+        });
+
+        //open Sign In Mechanic Activity
+        Button btnSignInMechanic = findViewById(R.id.btnSignInMechanic);
+        btnSignInMechanic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignInAndRegister.this, SignInMechanic.class);
+                startActivity(intent);
+            }
+        });
+
+        //open Register Mechanic Activity
+        Button btnRegisterMechanic = findViewById(R.id.btnRegisterMechanic);
+        btnRegisterMechanic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignInAndRegister.this, RegisterMechanic.class);
                 startActivity(intent);
             }
         });

@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Register extends AppCompatActivity {
+public class RegisterUser extends AppCompatActivity {
 
     private EditText editTxtFirstName, editTxtLastName, editTextMobileNo, editTxtEmailAddress, editTxtConfirmPassword, editTxtPassword;
     private CheckBox checkBox;
@@ -38,11 +38,11 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_user);
 
-        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setTitle("Register User");
 
-        Toast.makeText(Register.this, "You can register now", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisterUser.this, "You can register now", Toast.LENGTH_LONG).show();
 
         editTxtFirstName = findViewById(R.id.editTxtFirstName);
         editTxtLastName = findViewById(R.id.editTxtLastName);
@@ -77,46 +77,46 @@ public class Register extends AppCompatActivity {
 
 
                 if (TextUtils.isEmpty(textFirstName)) {
-                    Toast.makeText(Register.this, "Please enter your first name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your first name", Toast.LENGTH_LONG).show();
                     editTxtFirstName.setError("First Name is required");
                     editTxtFirstName.requestFocus();
                 } else if (TextUtils.isEmpty(textLastName)) {
-                    Toast.makeText(Register.this, "Please enter your last name", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your last name", Toast.LENGTH_LONG).show();
                     editTxtLastName.setError("Last Name is required");
                     editTxtLastName.requestFocus();
                 } else if (TextUtils.isEmpty(textMobileNo)) {
-                    Toast.makeText(Register.this, "Please enter your mobile no", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your mobile no", Toast.LENGTH_LONG).show();
                     editTextMobileNo.setError("Mobile Number is required");
                     editTextMobileNo.requestFocus();
                 } else if (!mobileMatcher.find()){
-                    Toast.makeText(Register.this, "Please re-enter your mobile no", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please re-enter your mobile no", Toast.LENGTH_LONG).show();
                     editTextMobileNo.setError("Mobile Number is invalid");
                     editTextMobileNo.requestFocus();
                 } else if (TextUtils.isEmpty(textEmailAddress)) {
-                    Toast.makeText(Register.this, "Please enter your email address", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your email address", Toast.LENGTH_LONG).show();
                     editTxtEmailAddress.setError("Email Address is required");
                     editTxtEmailAddress.requestFocus();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmailAddress).matches()) {
-                    Toast.makeText(Register.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
                     editTxtEmailAddress.setError("Valid email is required");
                     editTxtEmailAddress.requestFocus();
                 } else if (TextUtils.isEmpty(textPassword)) {
-                    Toast.makeText(Register.this, "Please enter your password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your password", Toast.LENGTH_LONG).show();
                     editTxtPassword.setError("Password is required");
                     editTxtPassword.requestFocus();
                 } else if (TextUtils.isEmpty(textConfirmPassword)) {
-                    Toast.makeText(Register.this, "Please enter your confirmed password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please enter your confirmed password", Toast.LENGTH_LONG).show();
                     editTxtConfirmPassword.setError("Password Confirmation is required");
                     editTxtConfirmPassword.requestFocus();
                 } else if (!textPassword.equals(textConfirmPassword)){
-                    Toast.makeText(Register.this, "Please set the same password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please set the same password", Toast.LENGTH_LONG).show();
                     editTxtConfirmPassword.setError("Password Confirmation is required");
                     editTxtConfirmPassword.requestFocus();
                     //Clear the entered passwords
                     editTxtPassword.clearComposingText();
                     editTxtConfirmPassword.clearComposingText();
                 } else if (!checkBox.isChecked()){
-                    Toast.makeText(Register.this, "Please check this box to agree to our Terms of Service and Privacy Policy", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterUser.this, "Please check this box to agree to our Terms of Service and Privacy Policy", Toast.LENGTH_LONG).show();
                     checkBox.setError("Your agreement to the Terms of Service and Privacy Policy is required");
                     checkBox.requestFocus();
                 } else {
@@ -129,7 +129,7 @@ public class Register extends AppCompatActivity {
     //Register User with given credentials
     private void registerUser(String textFirstName, String textLastName, String textMobileNo, String textEmailAddress, String textPassword) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(textEmailAddress, textPassword).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(textEmailAddress, textPassword).addOnCompleteListener(RegisterUser.this, new OnCompleteListener<AuthResult>() {
 
             String textFullName = textFirstName + " " + textLastName;
             @Override
@@ -157,10 +157,10 @@ public class Register extends AppCompatActivity {
                                 //SendVerification Email
                                 firebaseUser.sendEmailVerification();
 
-                                Toast.makeText(Register.this, "User registration is successful! :D. Please verify your email", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUser.this, "User registration is successful! :D. Please verify your email", Toast.LENGTH_LONG).show();
 
                                 //Open MainActivity after successful registration
-                                Intent intent = new Intent(Register.this, MainActivity.class);
+                                Intent intent = new Intent(RegisterUser.this, MainActivity.class);
 
                                 //To Prevent User from returning back to Register upon pressing back button after registration
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -168,7 +168,7 @@ public class Register extends AppCompatActivity {
                                 finish();   //to close Register
 
                             } else {
-                                Toast.makeText(Register.this, "User registration is unsuccessful! :( Please try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUser.this, "User registration is unsuccessful! :( Please try again", Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -187,7 +187,7 @@ public class Register extends AppCompatActivity {
                         editTxtEmailAddress.requestFocus();
                     } catch (Exception e){
                         Log.e(TAG, e.getMessage());
-                        Toast.makeText(Register.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterUser.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             }

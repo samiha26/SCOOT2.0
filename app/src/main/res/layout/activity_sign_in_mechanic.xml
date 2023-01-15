@@ -4,23 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignIn">
+    tools:context=".SignInUser">
 
     <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="161dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="44dp"
-        android:backgroundTint="#7296F9"
-        android:text="REGISTER"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
-
-    <Button
-        android:id="@+id/btnForgotPassword"
+        android:id="@+id/btnMechanicForgotPassword"
         android:layout_width="244dp"
         android:layout_height="49dp"
         android:backgroundTint="#7296F9"
@@ -42,7 +29,7 @@
         app:srcCompat="@drawable/scoot7" />
 
     <EditText
-        android:id="@+id/editTxtLoginEmail"
+        android:id="@+id/editTxtMechanicLoginEmail"
         android:layout_width="289dp"
         android:layout_height="48dp"
         android:layout_marginStart="60dp"
@@ -55,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTxtLoginPassword"
+        android:id="@+id/editTxtMechanicLoginPassword"
         android:layout_width="290dp"
         android:layout_height="48dp"
         android:layout_marginEnd="60dp"
@@ -68,29 +55,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginMechanic"
         android:layout_width="288dp"
         android:layout_height="48dp"
         android:backgroundTint="#7296F9"
-        android:text="Sign In"
+        android:text="Sign In BIZ"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.629" />
-
-    <TextView
-        android:id="@+id/textCreateAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Don't have an Account?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

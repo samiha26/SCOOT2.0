@@ -16,6 +16,20 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".SignInMechanic"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RegisterMechanic"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EWalletTransactions"
             android:exported="false" />
         <activity
@@ -53,13 +67,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChatPlatform"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ForgotPassword"
             android:exported="false">
             <meta-data
@@ -67,14 +74,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignIn"
+            android:name=".SignInUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".RegisterUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

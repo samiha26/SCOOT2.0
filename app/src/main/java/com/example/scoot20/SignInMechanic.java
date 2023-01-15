@@ -23,72 +23,61 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignIn extends AppCompatActivity {
-
-    private EditText editTxtLoginEmail, editTxtLoginPassword;
+public class SignInMechanic extends AppCompatActivity {
+    private EditText editTxtMechanicLoginEmail, editTxtMechanicLoginPassword;
     private FirebaseAuth authProfile;
-    private static final String TAG = "SignIn";
+    private static final String TAG = "Sign In Mechanic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in_mechanic);
+        getSupportActionBar().setTitle("Login BIZ");
 
-        getSupportActionBar().setTitle("Login");
-
-        editTxtLoginEmail = findViewById(R.id.editTxtLoginEmail);
-        editTxtLoginPassword = findViewById(R.id.editTxtLoginPassword);
+        editTxtMechanicLoginEmail = findViewById(R.id.editTxtMechanicLoginEmail);
+        editTxtMechanicLoginPassword = findViewById(R.id.editTxtMechanicLoginPassword);
 
         authProfile = FirebaseAuth.getInstance();
 
-        Button btnForgotPassword = findViewById(R.id.btnForgotPassword);
+        Button btnForgotPassword = findViewById(R.id.btnMechanicForgotPassword);
         btnForgotPassword.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignIn.this, "You can reset your password now", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(SignIn.this, ForgotPassword.class));
+                Toast.makeText(SignInMechanic.this, "You can reset your password now", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SignInMechanic.this, ForgotPassword.class));
             }
         });
 
-        Button btnSignUp = findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(SignIn.this, "You can Register now", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(SignIn.this, Register.class));
-            }
-        });
-
-        //SignIn User
-        Button btnLogin = findViewById(R.id.btnLogin);
+        //SignIn Mechanic
+        Button btnLogin = findViewById(R.id.btnLoginMechanic);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String textEmail = editTxtLoginEmail.getText().toString();
-                String textPassword = editTxtLoginPassword.getText().toString();
+                String textEmail = editTxtMechanicLoginEmail.getText().toString();
+                String textPassword = editTxtMechanicLoginPassword.getText().toString();
 
                 if (TextUtils.isEmpty(textEmail)){
-                    Toast.makeText(SignIn.this, "Please enter your email", Toast.LENGTH_LONG).show();
-                    editTxtLoginEmail.setError("Email is required");
-                    editTxtLoginEmail.requestFocus();
+                    Toast.makeText(SignInMechanic.this, "Please enter your email", Toast.LENGTH_LONG).show();
+                    editTxtMechanicLoginEmail.setError("Email is required");
+                    editTxtMechanicLoginEmail.requestFocus();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
-                    Toast.makeText(SignIn.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
-                    editTxtLoginEmail.setError("Valid email is required");
-                    editTxtLoginEmail.requestFocus();
+                    Toast.makeText(SignInMechanic.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
+                    editTxtMechanicLoginEmail.setError("Valid email is required");
+                    editTxtMechanicLoginEmail.requestFocus();
                 } else if (TextUtils.isEmpty(textPassword)){
-                    Toast.makeText(SignIn.this, "Please enter your password", Toast.LENGTH_LONG).show();
-                    editTxtLoginPassword.setError("Password is required");
-                    editTxtLoginPassword.requestFocus();
+                    Toast.makeText(SignInMechanic.this, "Please enter your password", Toast.LENGTH_LONG).show();
+                    editTxtMechanicLoginPassword.setError("Password is required");
+                    editTxtMechanicLoginPassword.requestFocus();
                 } else {
-                    signInUser(textEmail, textPassword);
+                    signInMechanic(textEmail, textPassword);
                 }
             }
         });
     }
 
-    private void signInUser(String email, String password) {
-        authProfile.signInWithEmailAndPassword(email, password).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
+    private void signInMechanic(String email, String password) {
+        authProfile.signInWithEmailAndPassword(email, password).addOnCompleteListener(SignInMechanic.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
@@ -98,11 +87,11 @@ public class SignIn extends AppCompatActivity {
 
                     //Check if email is verified before user can access their profile
                     if(firebaseUser.isEmailVerified()){
-                        Toast.makeText(SignIn.this, "You are Signed In now", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignInMechanic.this, "You are Signed In now", Toast.LENGTH_SHORT).show();
 
                         //Open user Profile
                         //Start Home
-                        startActivity(new Intent(SignIn.this, MainActivity.class));
+                        startActivity(new Intent(SignInMechanic.this, MainActivity.class));
                         finish(); //Close the Sign In Activity
 
                     }
@@ -117,14 +106,14 @@ public class SignIn extends AppCompatActivity {
                     try{
                         throw task.getException();
                     } catch(FirebaseAuthInvalidUserException e){ //if User no longer exist or deleted by admin
-                        editTxtLoginEmail.setError("User does not exist or is no longer valid. Please register again");
-                        editTxtLoginEmail.requestFocus();
+                        editTxtMechanicLoginEmail.setError("User does not exist or is no longer valid. Please register again");
+                        editTxtMechanicLoginEmail.requestFocus();
                     } catch(FirebaseAuthInvalidCredentialsException e){ //
-                        editTxtLoginEmail.setError("Invalid credentials. Kindly, check and re-enter.");
-                        editTxtLoginEmail.requestFocus();
+                        editTxtMechanicLoginEmail.setError("Invalid credentials. Kindly, check and re-enter.");
+                        editTxtMechanicLoginEmail.requestFocus();
                     } catch(Exception e){
                         Log.e(TAG, e.getMessage());
-                        Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignInMechanic.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -133,7 +122,7 @@ public class SignIn extends AppCompatActivity {
 
     private void showAlertDialog() {
         //Setup the Alert Builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(SignIn.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignInMechanic.this);
         builder.setTitle("Email Not Verified");
         builder.setMessage("Please verify your email now. You cannot login without email verification.");
 
@@ -160,14 +149,15 @@ public class SignIn extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         if(authProfile.getCurrentUser() != null) {
-            Toast.makeText(SignIn.this, "Already Signed In", Toast.LENGTH_LONG).show();
+            Toast.makeText(SignInMechanic.this, "Already Signed In", Toast.LENGTH_LONG).show();
 
             //Start Home
-            startActivity(new Intent(SignIn.this, MainActivity.class));
+            startActivity(new Intent(SignInMechanic.this, MainActivity.class));
             finish(); //Close SignIn
 
         } else{
-            Toast.makeText(SignIn.this, "You can Sign In now", Toast.LENGTH_LONG).show();
+            Toast.makeText(SignInMechanic.this, "You can Sign In now", Toast.LENGTH_LONG).show();
         }
     }
+
 }

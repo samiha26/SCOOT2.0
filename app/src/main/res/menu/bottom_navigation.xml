@@ -11,9 +11,6 @@
         android:id="@+id/ewallet"
         android:title="E-Wallet" />
     <item
-        android:id="@+id/message"
-        android:title="Messages" />
-    <item
         android:id="@+id/profile"
         android:title="Profile" />
 </menu>

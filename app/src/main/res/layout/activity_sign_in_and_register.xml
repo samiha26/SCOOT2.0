@@ -7,35 +7,56 @@
     tools:context=".SignInAndRegister">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/scoot6" />
 
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="127dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="144dp"
+        android:id="@+id/btnSignIn"
+        android:layout_width="269dp"
+        android:layout_height="39dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
         android:backgroundTint="#7296F9"
-        android:text="Register"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Sign in as user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="269dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="316dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="#7296F9"
+        android:text="Register as user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRegisterMechanic"
+        android:layout_width="269dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="#7296F9"
+        android:text="Register as mechanic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
     <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="127dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="320dp"
+        android:id="@+id/btnSignInMechanic"
+        android:layout_width="269dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="68dp"
         android:backgroundTint="#7296F9"
-        android:text="Sign in"
+        android:text="sign in as mechanic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterMechanic"
+        app:layout_constraintVertical_bias="0.052" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
