@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".CreateEWallet"
+            android:exported="false" />
+        <activity
             android:name=".EWalletTransactions"
             android:exported="false" />
         <activity

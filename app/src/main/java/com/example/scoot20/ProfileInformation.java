@@ -98,15 +98,11 @@ public class ProfileInformation extends AppCompatActivity {
                     case R.id.profile:
                         return true;
                     case R.id.ewallet:
-                        startActivity(new Intent(getApplicationContext(),EWallet.class));
+                        startActivity(new Intent(getApplicationContext(),CreateEWallet.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.message:
-                        startActivity(new Intent(getApplicationContext(),Message.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

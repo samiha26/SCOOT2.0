@@ -42,26 +42,23 @@
                 android:textSize="24sp" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
-    
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="655dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listView_transactions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:divider="@null"
+            android:dividerHeight="0dp">
 
-            <ListView
-                android:id="@+id/listView_transactions"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@null"
-                android:dividerHeight="0dp">
+        </ListView>
 
-            </ListView>
+    </LinearLayout>
 
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

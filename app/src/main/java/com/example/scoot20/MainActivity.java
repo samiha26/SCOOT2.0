@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.ewallet:
-                        startActivity(new Intent(getApplicationContext(),EWallet.class));
+                        startActivity(new Intent(getApplicationContext(),CreateEWallet.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.profile:
