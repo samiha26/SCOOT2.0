@@ -9,6 +9,7 @@ public class Order{
     private String date;
     private String time;
     private String model;
+    private String userID;
     private boolean status;
 
     public Order(){}
@@ -66,6 +67,14 @@ public class Order{
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     @Override

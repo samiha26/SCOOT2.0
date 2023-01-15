@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".MechanicOrderPrice"
+            android:exported="false" />
+        <activity
             android:name=".MechanicProfile"
             android:exported="false" />
         <activity

@@ -40,10 +40,6 @@ public class RequestList extends ArrayAdapter<BookingDetails> {
         BtnAccept.setOnClickListener(v -> {
             AcceptRequest(position);
         });
-        ImageButton BtnReject = (ImageButton) listViewItem.findViewById(R.id.BtnReject);
-        BtnReject.setOnClickListener(v -> {
-            RejectRequest(position);
-        });
 
         txt_name.setText(cust.getName());
         txt_date.setText(cust.getDate());
@@ -55,14 +51,11 @@ public class RequestList extends ArrayAdapter<BookingDetails> {
     public void AcceptRequest(int position){
         BookingDetails BookingDetails = requestList.get(position);
         Order order = BookingDetails.toOrder(BookingDetails);
+        order.setUserID(BookingDetails.getParentKey());
         daoOrder.add(order);
-        daoBookingDetails.remove(BookingDetails.getKey());
+        daoBookingDetails.remove(BookingDetails.getParentKey(), BookingDetails.getKey());
         this.notifyDataSetChanged();
     }
-    public void RejectRequest(int position){
-        BookingDetails BookingDetails = requestList.get(position);
-        daoBookingDetails.remove(BookingDetails.getKey());
-        this.notifyDataSetChanged();
-    }
+
 }
 

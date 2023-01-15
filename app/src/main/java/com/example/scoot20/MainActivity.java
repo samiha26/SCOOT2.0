@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        authProfile = FirebaseAuth.getInstance();
 
         Button btnQuickBooking = findViewById(R.id.QuickBookingButton);
 
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 authProfile.signOut();
-                //startActivity(new Intent(MainActivity.this, SignInAndRegister.class));
-
+                startActivity(new Intent(MainActivity.this, SignInAndRegister.class));
+                finish();
             }
         });
 

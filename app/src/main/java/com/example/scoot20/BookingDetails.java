@@ -11,6 +11,7 @@ public class BookingDetails {
     private String model;
     private String name;
     private String key;
+    private String parentKey;
 
     public BookingDetails() {}
 
@@ -96,6 +97,14 @@ public class BookingDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getParentKey() {
+        return parentKey;
+    }
+
+    public void setParentKey(String parentKey) {
+        this.parentKey = parentKey;
     }
 
     public static Order toOrder (BookingDetails bookingDetails){

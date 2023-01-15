@@ -38,9 +38,10 @@ public class DAOBookingDetails {
             }
         });
         bd.setKey(BDKey);
+        bd.setParentKey(key);
         return databaseReference.child(key).child(BDKey).setValue(bd);
     }
-    public Task<Void> remove(String key){
-        return databaseReference.child(key).removeValue();
+    public Task<Void> remove(String UID, String key){
+        return databaseReference.child(UID).child(key).removeValue();
     }
 }
