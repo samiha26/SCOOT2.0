@@ -13,13 +13,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EWallet extends AppCompatActivity {
 
-    private SharedPreferences mPrefs;
-    private final String AMOUNT_KEY = "amount";
     TextView balanceTextView;
-    int balance = 0;
+    FirebaseAuth authProfile;
+    DatabaseReference databaseEwallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +65,28 @@ public class EWallet extends AppCompatActivity {
 
         //initialize views
         balanceTextView = findViewById(R.id.TxtAmountEwallet);
-        mPrefs =getPreferences(MODE_PRIVATE);
 
-        //Retrieve the initial amount from sharedPreferences
-        double initialAmount = mPrefs.getFloat(AMOUNT_KEY, 0);
-        balanceTextView.setText(String.format("%.2f", initialAmount));
-        // ...
 
         ImageButton topupButton = findViewById(R.id.BtnTopupEwallet);
         ImageButton payButton = findViewById(R.id.BtnPayEwallet);
         ImageButton transactionButton = findViewById(R.id.BtnTransactionEwallet);
         ImageButton ewalletSetting = findViewById(R.id.BtnEwalletSetting);
+        //Set money amount
+        authProfile = FirebaseAuth.getInstance();
+        String userKey = authProfile.getCurrentUser().getUid();
+        databaseEwallet = FirebaseDatabase.getInstance().getReference("E-Wallet").child(userKey);
+        databaseEwallet.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Double amount = snapshot.child("balance").getValue(Double.class);
+                balanceTextView.setText(amount.toString());
+            }
 
-        //set initial balance amount
-        //balanceTextView.setText(String.format("%d.5", balance));
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //set onClick Listeners
         topupButton.setOnClickListener(new View.OnClickListener() {
@@ -110,33 +123,5 @@ public class EWallet extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), EWalletSetting.class));
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Check which activity returned a result
-        if (requestCode == 1) {
-            // Top-up activity returned a result
-            if (resultCode == RESULT_OK) {
-                // Get top-up amount from intent
-                int topUpAmount = data.getIntExtra("topUpAmount", 0);
-                // Add top-up amount to balance
-                balance += topUpAmount;
-                // Update balance text view
-                balanceTextView.setText(String.format("%d", balance));
-            }
-        } else if (requestCode == 2) {
-            // Pay activity returned a result
-            if (resultCode == RESULT_OK) {
-                // Get pay amount from intent
-                int payAmount = data.getIntExtra("payAmount", 0);
-                // Subtract pay amount from balance
-                balance -= payAmount;
-                // Update balance text view
-                balanceTextView.setText(String.format("%d", balance));
-            }
-        }
     }
 }

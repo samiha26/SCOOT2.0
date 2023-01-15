@@ -1,5 +1,6 @@
 package com.example.scoot20;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,13 +9,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class EWalletTransactions extends AppCompatActivity {
 
-    private ListView mTransactionListView;
-    private ArrayList<Transaction> mTransactionList;
-    private TransactionListAdapter mTransactionListAdapter;
+    DatabaseReference databaseTransaction;
+    ListView listViewTransaction;
+    List<Transaction> transactionList;
+    FirebaseAuth authProfile;
 
     ImageButton backToEWalletFromTransaction;
 
@@ -22,19 +32,13 @@ public class EWalletTransactions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ewallet_transactions);
+        authProfile = FirebaseAuth.getInstance();
+        String key = authProfile.getCurrentUser().getUid();
+        databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction").child(key);
 
-        mTransactionListView = findViewById(R.id.listView_transactions);
-        mTransactionList = new ArrayList<>();
-        mTransactionListAdapter =new TransactionListAdapter(this, mTransactionList);
-        mTransactionListView.setAdapter(mTransactionListAdapter);
+        listViewTransaction = (ListView) findViewById(R.id.listView_transactions);
+        transactionList = new ArrayList<>();
 
-        //retrieve payTo and payAmount from the intent and add to transaction list
-        Intent intent =getIntent();
-        String payTo =intent.getStringExtra("payTo");
-        double payAmount =intent.getDoubleExtra("payAmount", 0);
-        if (payTo != null && payAmount > 0) {
-            addTransaction(payTo, payAmount);
-        }
 
         backToEWalletFromTransaction = findViewById(R.id.BtnBackToEWalletFromTransaction);
         backToEWalletFromTransaction.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +49,25 @@ public class EWalletTransactions extends AppCompatActivity {
         });
     }
 
-    public void addTransaction(String payTo, double payAmount) {
-        mTransactionList.add(new Transaction(payTo, payAmount));
-        mTransactionListAdapter.notifyDataSetChanged();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseTransaction.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                transactionList.clear();
+                for (DataSnapshot transactionSnapshot : snapshot.getChildren()) {
+                    Transaction transaction = transactionSnapshot.getValue(Transaction.class);
+                    transactionList.add(transaction);
+                }
+                TransactionListAdapter adapter = new TransactionListAdapter(EWalletTransactions.this, transactionList);
+                listViewTransaction.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

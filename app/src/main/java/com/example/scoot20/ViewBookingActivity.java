@@ -64,7 +64,7 @@ public class ViewBookingActivity extends AppCompatActivity {
                     case R.id.activities:
                         return true;
                     case R.id.ewallet:
-                        startActivity(new Intent(getApplicationContext(),EWallet.class));
+                        startActivity(new Intent(getApplicationContext(),CreateEWallet.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.profile:
