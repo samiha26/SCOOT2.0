@@ -16,6 +16,18 @@
         android:theme="@style/Theme.SCOOT"
         tools:targetApi="31">
         <activity
+            android:name=".MechanicProfile"
+            android:exported="false" />
+        <activity
+            android:name=".MechanicEWallet"
+            android:exported="false" />
+        <activity
+            android:name=".MechanicOrders"
+            android:exported="false" />
+        <activity
+            android:name=".MechanicRequests"
+            android:exported="false" />
+        <activity
             android:name=".CreateEWallet"
             android:exported="false" />
         <activity
@@ -86,9 +98,9 @@
         <activity
             android:name=".RegisterMechanic"
             android:exported="false">
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
             android:name=".MainActivity"

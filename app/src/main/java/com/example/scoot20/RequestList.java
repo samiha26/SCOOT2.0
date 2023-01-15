@@ -12,15 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
-/*
-public class RequestList extends ArrayAdapter<Customer> {
+
+public class RequestList extends ArrayAdapter<BookingDetails> {
     private Activity context;
-    private List<Customer> requestList;
-    DAOCustomer daoCustomer = new DAOCustomer();
+    private List<BookingDetails> requestList;
+    DAOBookingDetails daoBookingDetails = new DAOBookingDetails();
     DAOOrder daoOrder = new DAOOrder();
 
-    public RequestList(Activity context, List<Customer> requestList) {
-        super(context, R.layout.layout_item, requestList);
+    public RequestList(Activity context, List<BookingDetails> requestList) {
+        super(context, R.layout.list_item_request, requestList);
         this.context = context;
         this.requestList = requestList;
     }
@@ -28,10 +28,10 @@ public class RequestList extends ArrayAdapter<Customer> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Customer cust = requestList.get(position);
+        BookingDetails cust = requestList.get(position);
 
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.layout_item, parent, false);
+        View listViewItem = inflater.inflate(R.layout.list_item_request, parent, false);
         TextView txt_name = (TextView) listViewItem.findViewById(R.id.txt_name);
         TextView txt_date = (TextView) listViewItem.findViewById(R.id.txt_date);
         TextView txt_time = (TextView) listViewItem.findViewById(R.id.txt_time);
@@ -53,16 +53,16 @@ public class RequestList extends ArrayAdapter<Customer> {
         return listViewItem;
     }
     public void AcceptRequest(int position){
-        Customer customer = requestList.get(position);
-        Order order = Customer.toOrder(customer);
+        BookingDetails BookingDetails = requestList.get(position);
+        Order order = BookingDetails.toOrder(BookingDetails);
         daoOrder.add(order);
-        daoCustomer.remove(customer.getKey());
+        daoBookingDetails.remove(BookingDetails.getKey());
         this.notifyDataSetChanged();
     }
     public void RejectRequest(int position){
-        Customer customer = requestList.get(position);
-        daoCustomer.remove(customer.getKey());
+        BookingDetails BookingDetails = requestList.get(position);
+        daoBookingDetails.remove(BookingDetails.getKey());
         this.notifyDataSetChanged();
     }
 }
-*/
+

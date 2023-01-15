@@ -9,6 +9,7 @@ public class BookingDetails {
     private String dAdd;
     private String dPhone;
     private String model;
+    private String name;
     private String key;
 
     public BookingDetails() {}
@@ -87,6 +88,22 @@ public class BookingDetails {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static Order toOrder (BookingDetails bookingDetails){
+        Order order = new Order(bookingDetails.getName().toString(),
+                bookingDetails.getDate().toString(),
+                bookingDetails.getTime().toString(),
+                bookingDetails.getModel().toString());
+        return order;
     }
 
 }

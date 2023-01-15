@@ -91,7 +91,7 @@ public class SignInMechanic extends AppCompatActivity {
 
                         //Open user Profile
                         //Start Home
-                        startActivity(new Intent(SignInMechanic.this, MainActivity.class));
+                        startActivity(new Intent(SignInMechanic.this, MechanicRequests.class));
                         finish(); //Close the Sign In Activity
 
                     }
@@ -152,7 +152,7 @@ public class SignInMechanic extends AppCompatActivity {
             Toast.makeText(SignInMechanic.this, "Already Signed In", Toast.LENGTH_LONG).show();
 
             //Start Home
-            startActivity(new Intent(SignInMechanic.this, MainActivity.class));
+            startActivity(new Intent(SignInMechanic.this, MechanicRequests.class));
             finish(); //Close SignIn
 
         } else{
