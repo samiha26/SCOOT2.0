@@ -35,9 +35,17 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#7295F8"
+        android:background="@drawable/rounded_button"
+
         android:text="Add E-Scooter"
+        android:textColor="#fff"
         android:id="@+id/BtnCreateEScooter"/>
+
+    <ImageView
+        android:id="@+id/escooter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/scooter_e" />
 
 
 </LinearLayout>
