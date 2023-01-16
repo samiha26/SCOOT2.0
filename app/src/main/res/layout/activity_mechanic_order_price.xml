@@ -23,6 +23,8 @@
         android:id="@+id/BtnSubmitOrderPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:textColor="#fff"
         android:layout_marginTop="36dp"
         android:text="Enter"
         app:layout_constraintEnd_toEndOf="parent"

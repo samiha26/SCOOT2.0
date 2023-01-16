@@ -75,6 +75,7 @@
             android:id="@+id/textView_payAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:textSize="13sp"
             android:text="amount" />
 

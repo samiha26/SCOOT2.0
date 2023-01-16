@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="#7296F9"
+        android:background="@drawable/rounded_button"
         android:text="CREATE BIZ ACCOUNT"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

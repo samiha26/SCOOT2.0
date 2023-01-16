@@ -21,6 +21,8 @@
             android:textColor="#7295F8"
             android:textSize="24dp" />
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +44,15 @@
                 android:textSize="12dp" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/scooterimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/scooter" />
+
+
+
 
 
     </LinearLayout>

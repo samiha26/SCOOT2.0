@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ViewBookingActivity"
     android:orientation="vertical">
+
     <Button
+        android:id="@+id/BtnBookNow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/BtnBookNow"
+        android:background="@drawable/rounded_button"
         android:text="Book Now"
-        android:backgroundTint="@android:color/holo_blue_dark"/>
+        android:textColor="#fff" />
 
     <ListView
         android:id="@+id/listViewBooking"
