@@ -15,10 +15,10 @@
         android:textColor="@color/black"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/ETScooterModel"
-        android:hint="Enter E-Scooter Model"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter E-Scooter Model" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,10 +27,10 @@
         android:textColor="@color/black"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/ETScooterRegistration"
-        android:hint="Enter E-Scooter Registration Number"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter E-Scooter Registration Number" />
 
     <Button
         android:layout_width="match_parent"

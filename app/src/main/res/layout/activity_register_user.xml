@@ -11,10 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="279dp"
         android:text="Mobile Number"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTxtFirstName" />
 
     <EditText
         android:id="@+id/editTxtMobileNo"
@@ -135,44 +137,59 @@
         android:layout_width="329dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
+        android:layout_marginEnd="42dp"
         android:layout_marginBottom="168dp"
         android:ems="10"
         android:hint="***********"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordtxt" />
 
     <TextView
         android:id="@+id/passwordtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="240dp"
         android:layout_marginBottom="216dp"
         android:text="Confirmed Password"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtPassword" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="329dp"
         android:layout_height="48dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="23dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="96dp"
         android:text="I have read and accepted the Terms of Service and Privacy Policy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtConfirmPassword" />
 
     <EditText
         android:id="@+id/editTxtEmailAddress"
         android:layout_width="327dp"
         android:layout_height="48dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="48dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/passwordtxt2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailaddtxt" />
 
     <ImageView
         android:id="@+id/imageView2"

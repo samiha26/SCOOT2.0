@@ -19,41 +19,36 @@
             android:layout_height="wrap_content"
             android:text="Number"
             android:textColor="#494a4b"
-            android:textSize="14dp"
-            >
-        </TextView>
+            android:textSize="16sp"></TextView>
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
             android:textColor="#494a4b"
-            android:textSize="14dp"
-            >
-        </TextView>
+            android:textSize="16sp"></TextView>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Service Date"
-            android:textColor="#494a4b"
-            android:textSize="14dp"
-            >
-        </TextView>
-        <TextView
-            android:id="@+id/Sdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="SDate"
-            android:textColor="#494a4b"
-            android:textSize="14dp"
-            >
-        </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Date"
+                android:textColor="#494a4b"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:id="@+id/Sdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="SDate"
+                android:textColor="#494a4b"
+                android:textSize="16sp"></TextView>
         </LinearLayout>
 
     </LinearLayout>

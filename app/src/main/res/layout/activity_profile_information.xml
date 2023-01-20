@@ -53,7 +53,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/profile_navigation"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
@@ -63,6 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="First Name"
             android:textColor="@color/ic_banner_background" />
 
@@ -76,6 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Last Name"
             android:textColor="@color/ic_banner_background" />
 
@@ -89,6 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Phone Number"
             android:textColor="@color/ic_banner_background" />
 
@@ -122,13 +125,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|center"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="125dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="162dp"
         android:backgroundTint="#FEFEFE"
         android:text="Edit User"
         android:textAllCaps="false"
         android:textColor="#7295F8"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

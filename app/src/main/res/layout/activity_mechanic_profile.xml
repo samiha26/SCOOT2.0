@@ -62,6 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="First Name"
             android:textColor="@color/ic_banner_background" />
 
@@ -75,6 +76,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Last Name"
             android:textColor="@color/ic_banner_background" />
 
@@ -88,32 +90,37 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Phone Number"
             android:textColor="@color/ic_banner_background" />
 
         <EditText
             android:id="@+id/ETPhoneNumberEdit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_margin="10sp"
             android:background="@color/ic_banner_background" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/BtnEditUser"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#FEFEFE"
-        android:text="Edit User"
-        android:textAllCaps="false"
-        android:textColor="#7295F8"
-        android:textStyle="bold" />
+            <Button
+                android:id="@+id/BtnEditUser"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:backgroundTint="#FEFEFE"
+                android:text="Edit User"
+                android:textAllCaps="false"
+                android:textColor="#7295F8"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

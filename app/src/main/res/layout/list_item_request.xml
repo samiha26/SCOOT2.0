@@ -12,6 +12,7 @@
         <ImageView
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_marginEnd="5dp"
             app:srcCompat="@android:drawable/ic_menu_manage"
             android:padding="5dp"/>
 
@@ -26,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txt_date"
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txt_time"
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txt_model"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -63,6 +64,7 @@
                 android:id="@+id/BtnAccept"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#2D7527"
                 android:src="@android:drawable/ic_input_add" />
