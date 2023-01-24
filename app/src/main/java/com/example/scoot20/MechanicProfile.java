@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +28,22 @@ public class MechanicProfile extends AppCompatActivity {
 
     FirebaseAuth authProfile;
     DatabaseReference databaseUser;
+    private ImageView btnLogOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic_profile);
+
+        ImageView btnLogOut = findViewById(R.id.btnLogOut);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                authProfile.signOut();
+                startActivity(new Intent(MechanicProfile.this, SignInAndRegister.class));
+                finish();
+            }
+        });
 
         authProfile = FirebaseAuth.getInstance();
         String key = authProfile.getCurrentUser().getUid();
@@ -53,7 +66,12 @@ public class MechanicProfile extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
+
+
+
         String email = authProfile.getCurrentUser().getEmail();
         txt_profileMail.setText(email);
         //Edit User Details

@@ -7,6 +7,21 @@
     tools:context=".MechanicProfile"
     android:background="@drawable/scoot__1_">
 
+
+    <ImageView
+        android:id="@+id/btnLogOut"
+        android:layout_width="56dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_logout_24" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
