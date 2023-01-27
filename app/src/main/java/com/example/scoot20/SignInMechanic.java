@@ -57,15 +57,20 @@ public class SignInMechanic extends AppCompatActivity {
                 String textEmail = editTxtMechanicLoginEmail.getText().toString();
                 String textPassword = editTxtMechanicLoginPassword.getText().toString();
 
+                //if Email Address has not been entered
                 if (TextUtils.isEmpty(textEmail)){
                     Toast.makeText(SignInMechanic.this, "Please enter your email", Toast.LENGTH_LONG).show();
                     editTxtMechanicLoginEmail.setError("Email is required");
                     editTxtMechanicLoginEmail.requestFocus();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
+                }
+                //if Email Address is invalid
+                else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
                     Toast.makeText(SignInMechanic.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
                     editTxtMechanicLoginEmail.setError("Valid email is required");
                     editTxtMechanicLoginEmail.requestFocus();
-                } else if (TextUtils.isEmpty(textPassword)){
+                }
+                //if Password has not been entered
+                else if (TextUtils.isEmpty(textPassword)){
                     Toast.makeText(SignInMechanic.this, "Please enter your password", Toast.LENGTH_LONG).show();
                     editTxtMechanicLoginPassword.setError("Password is required");
                     editTxtMechanicLoginPassword.requestFocus();
@@ -105,13 +110,18 @@ public class SignInMechanic extends AppCompatActivity {
                 } else {
                     try{
                         throw task.getException();
-                    } catch(FirebaseAuthInvalidUserException e){ //if User no longer exist or deleted by admin
+                    }
+                    //if User no longer exist or deleted by admin
+                    catch(FirebaseAuthInvalidUserException e){
                         editTxtMechanicLoginEmail.setError("User does not exist or is no longer valid. Please register again");
                         editTxtMechanicLoginEmail.requestFocus();
-                    } catch(FirebaseAuthInvalidCredentialsException e){ //
+                    }
+                    //invalid credentials
+                    catch(FirebaseAuthInvalidCredentialsException e){ //
                         editTxtMechanicLoginEmail.setError("Invalid credentials. Kindly, check and re-enter.");
                         editTxtMechanicLoginEmail.requestFocus();
-                    } catch(Exception e){
+                    }
+                    catch(Exception e){
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(SignInMechanic.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -123,7 +133,11 @@ public class SignInMechanic extends AppCompatActivity {
     private void showAlertDialog() {
         //Setup the Alert Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(SignInMechanic.this);
+
+        //to notify Mechanic that email has not been verified
         builder.setTitle("Email Not Verified");
+
+        //to remind Mechanic to verify his/her email
         builder.setMessage("Please verify your email now. You cannot login without email verification.");
 
         //Open Email Apps if User clicks/taps Continue button
@@ -149,13 +163,16 @@ public class SignInMechanic extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         if(authProfile.getCurrentUser() != null) {
+            //to notify the Mechanic that he/she is already signed in
             Toast.makeText(SignInMechanic.this, "Already Signed In", Toast.LENGTH_LONG).show();
 
             //Start Home
             startActivity(new Intent(SignInMechanic.this, MechanicRequests.class));
             finish(); //Close SignIn
 
-        } else{
+        }
+        //to notify the Mechanic that he can sign in now
+        else{
             Toast.makeText(SignInMechanic.this, "You can Sign In now", Toast.LENGTH_LONG).show();
         }
     }

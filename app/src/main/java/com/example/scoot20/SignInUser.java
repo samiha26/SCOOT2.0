@@ -68,19 +68,25 @@ public class SignInUser extends AppCompatActivity {
                 String textEmail = editTxtLoginEmail.getText().toString();
                 String textPassword = editTxtLoginPassword.getText().toString();
 
+                //if Email Address has not been entered
                 if (TextUtils.isEmpty(textEmail)){
                     Toast.makeText(SignInUser.this, "Please enter your email", Toast.LENGTH_LONG).show();
                     editTxtLoginEmail.setError("Email is required");
                     editTxtLoginEmail.requestFocus();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
+                }
+                //if Email Address is invalid
+                else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
                     Toast.makeText(SignInUser.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
                     editTxtLoginEmail.setError("Valid email is required");
                     editTxtLoginEmail.requestFocus();
-                } else if (TextUtils.isEmpty(textPassword)){
+                }
+                //if Password has not been entered
+                else if (TextUtils.isEmpty(textPassword)){
                     Toast.makeText(SignInUser.this, "Please enter your password", Toast.LENGTH_LONG).show();
                     editTxtLoginPassword.setError("Password is required");
                     editTxtLoginPassword.requestFocus();
-                } else {
+                }
+                else {
                     signInUser(textEmail, textPassword);
                 }
             }
@@ -116,13 +122,18 @@ public class SignInUser extends AppCompatActivity {
                 } else {
                     try{
                         throw task.getException();
-                    } catch(FirebaseAuthInvalidUserException e){ //if User no longer exist or deleted by admin
+                    }
+                    //if User no longer exist or deleted by admin
+                    catch(FirebaseAuthInvalidUserException e){
                         editTxtLoginEmail.setError("User does not exist or is no longer valid. Please register again");
                         editTxtLoginEmail.requestFocus();
-                    } catch(FirebaseAuthInvalidCredentialsException e){ //
+                    }
+                    //invalid credentials
+                    catch(FirebaseAuthInvalidCredentialsException e){ //User input wrong credentials
                         editTxtLoginEmail.setError("Invalid credentials. Kindly, check and re-enter.");
                         editTxtLoginEmail.requestFocus();
-                    } catch(Exception e){
+                    }
+                    catch(Exception e){
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(SignInUser.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -134,7 +145,11 @@ public class SignInUser extends AppCompatActivity {
     private void showAlertDialog() {
         //Setup the Alert Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(SignInUser.this);
+
+        //to notify Mechanic that email has not been verified
         builder.setTitle("Email Not Verified");
+
+        //to remind Mechanic to verify his/her email
         builder.setMessage("Please verify your email now. You cannot login without email verification.");
 
         //Open Email Apps if User clicks/taps Continue button
@@ -160,13 +175,16 @@ public class SignInUser extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         if(authProfile.getCurrentUser() != null) {
+            //to notify the Mechanic that he/she is already signed in
             Toast.makeText(SignInUser.this, "Already Signed In", Toast.LENGTH_LONG).show();
 
             //Start Home
             startActivity(new Intent(SignInUser.this, MainActivity.class));
             finish(); //Close SignIn
 
-        } else{
+        }
+        //to notify the Mechanic that he can sign in now
+        else{
             Toast.makeText(SignInUser.this, "You can Sign In now", Toast.LENGTH_LONG).show();
         }
     }

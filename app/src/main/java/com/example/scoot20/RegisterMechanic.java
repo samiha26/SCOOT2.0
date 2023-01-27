@@ -73,52 +73,69 @@ public class RegisterMechanic extends AppCompatActivity {
                 Pattern mobilePattern = Pattern.compile(mobileRegex);
                 mobileMatcher = mobilePattern.matcher(textMobileNo);
 
-
+                //if First Name is not entered
                 if (TextUtils.isEmpty(textFirstName)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your first name", Toast.LENGTH_LONG).show();
                     editTxtMechanicFirstName.setError("First Name is required");
                     editTxtMechanicFirstName.requestFocus();
-                } else if (TextUtils.isEmpty(textLastName)) {
+                }
+                //if Last Name is not entered
+                else if (TextUtils.isEmpty(textLastName)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your last name", Toast.LENGTH_LONG).show();
                     editTxtMechanicLastName.setError("Last Name is required");
                     editTxtMechanicLastName.requestFocus();
-                } else if (TextUtils.isEmpty(textMobileNo)) {
+                }
+                //if Mobile Number is not entered
+                else if (TextUtils.isEmpty(textMobileNo)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your mobile no", Toast.LENGTH_LONG).show();
                     editTextMechanicMobileNo.setError("Mobile Number is required");
                     editTextMechanicMobileNo.requestFocus();
-                } else if (!mobileMatcher.find()){
+                }
+                //if Mobile Number does not follow the rules which is first number must be 6
+                else if (!mobileMatcher.find()){
                     Toast.makeText(RegisterMechanic.this, "Please re-enter your mobile no", Toast.LENGTH_LONG).show();
                     editTextMechanicMobileNo.setError("Mobile Number is invalid");
                     editTextMechanicMobileNo.requestFocus();
-                } else if (TextUtils.isEmpty(textEmailAddress)) {
+                }
+                //if Email Address is not entered
+                else if (TextUtils.isEmpty(textEmailAddress)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your email address", Toast.LENGTH_LONG).show();
                     editTxtMechanicEmailAddress.setError("Email Address is required");
                     editTxtMechanicEmailAddress.requestFocus();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmailAddress).matches()) {
+                }
+                //if Email Address does not follow the format
+                else if (!Patterns.EMAIL_ADDRESS.matcher(textEmailAddress).matches()) {
                     Toast.makeText(RegisterMechanic.this, "Please re-enter your email", Toast.LENGTH_LONG).show();
                     editTxtMechanicEmailAddress.setError("Valid email is required");
                     editTxtMechanicEmailAddress.requestFocus();
-                } else if (TextUtils.isEmpty(textPassword)) {
+                }
+                //if Password is not entered yet
+                else if (TextUtils.isEmpty(textPassword)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your password", Toast.LENGTH_LONG).show();
                     editTxtMechanicPassword.setError("Password is required");
                     editTxtMechanicPassword.requestFocus();
-                } else if (TextUtils.isEmpty(textConfirmPassword)) {
+                }
+                //if Confirm Password is not entered
+                else if (TextUtils.isEmpty(textConfirmPassword)) {
                     Toast.makeText(RegisterMechanic.this, "Please enter your confirmed password", Toast.LENGTH_LONG).show();
                     editTxtMechanicConfirmPassword.setError("Password Confirmation is required");
                     editTxtMechanicConfirmPassword.requestFocus();
-                } else if (!textPassword.equals(textConfirmPassword)){
+                }
+                //if the Confirm Password is not the same as entered Password
+                else if (!textPassword.equals(textConfirmPassword)){
                     Toast.makeText(RegisterMechanic.this, "Please set the same password", Toast.LENGTH_LONG).show();
                     editTxtMechanicConfirmPassword.setError("Password Confirmation is required");
                     editTxtMechanicConfirmPassword.requestFocus();
                     //Clear the entered passwords
                     editTxtMechanicPassword.clearComposingText();
                     editTxtMechanicConfirmPassword.clearComposingText();
-                } else if (!checkBoxMechanic.isChecked()){
+                }
+                //if checkbox has not been checked
+                else if (!checkBoxMechanic.isChecked()){
                     Toast.makeText(RegisterMechanic.this, "Please check this box to agree to our Terms of Service and Privacy Policy", Toast.LENGTH_LONG).show();
                     checkBoxMechanic.setError("Your agreement to the Terms of Service and Privacy Policy is required");
                     checkBoxMechanic.requestFocus();
                 } else {
-
                     registerMechanic(textFirstName, textLastName, textMobileNo, textEmailAddress, textPassword);
                 }
             }
@@ -144,7 +161,7 @@ public class RegisterMechanic extends AppCompatActivity {
                     //Enter User Data into the Firebase Realtime Database
                     ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFirstName, textLastName, textFullName, textEmailAddress, textMobileNo);
 
-                    //Extracting user reference from Database for "Registered Users"
+                    //Extracting user reference from Database for "Mechanic"
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Mechanics");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -155,7 +172,8 @@ public class RegisterMechanic extends AppCompatActivity {
                                 //SendVerification Email
                                 firebaseUser.sendEmailVerification();
 
-                                Toast.makeText(RegisterMechanic.this, "User registration is successful! :D. Please verify your email", Toast.LENGTH_LONG).show();
+                                //to display message that user that registration is successful to remind user to verify email
+                                Toast.makeText(RegisterMechanic.this, "Your registration is successful! :D. Please verify your email", Toast.LENGTH_LONG).show();
 
                                 //Open MainActivity after successful registration
                                 Intent intent = new Intent(RegisterMechanic.this, SignInMechanic.class);
@@ -165,8 +183,10 @@ public class RegisterMechanic extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();   //to close Register
 
-                            } else {
-                                Toast.makeText(RegisterMechanic.this, "User registration is unsuccessful! :( Please try again", Toast.LENGTH_LONG).show();
+                            }
+                            //To Prevent User from returning back to Register upon pressing back button after registration
+                            else {
+                                Toast.makeText(RegisterMechanic.this, "Your registration is unsuccessful! :( Please try again", Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -174,16 +194,23 @@ public class RegisterMechanic extends AppCompatActivity {
                 } else {
                     try{
                         throw task.getException();
-                    } catch (FirebaseAuthWeakPasswordException e) {
+                    }
+                    //if Password is too weak
+                    catch (FirebaseAuthWeakPasswordException e) {
                         editTxtMechanicPassword.setError("Your password is too weak. Kindly use a mix of alphabets, numbers and special characters");
                         editTxtMechanicPassword.requestFocus();
-                    } catch (FirebaseAuthInvalidCredentialsException e){
+                    }
+                    //if Email Address used already has an account
+                    catch (FirebaseAuthInvalidCredentialsException e){
                         editTxtMechanicEmailAddress.setError("Your email is invalid or already in use. Kindly re-enter");
                         editTxtMechanicEmailAddress.requestFocus();
-                    } catch (FirebaseAuthUserCollisionException e){
+                    }
+                    //if  Email already has been registered with an account
+                    catch (FirebaseAuthUserCollisionException e){
                         editTxtMechanicEmailAddress.setError("Mechanic is already registered with this email. Use another email.");
                         editTxtMechanicEmailAddress.requestFocus();
-                    } catch (Exception e){
+                    }
+                    catch (Exception e){
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(RegisterMechanic.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
